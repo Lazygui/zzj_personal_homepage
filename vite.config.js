@@ -21,8 +21,6 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'src'),
         }
     },
-    server: {
-        host: '0.0.0.0'
-    },
-    base: './'
+    base: './',
+    publicPath: process.env.NODE_ENV === "production" ? "/vue-running" : "/",
 })
