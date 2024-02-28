@@ -9,7 +9,7 @@ const randomImage = getRandomBg();
 </script>
 
 <template>
-  <!--     背景图片-->
+  <!--   背景图片-->
   <div class="bg-img">
     <img :src="randomImage" alt="">
   </div>
