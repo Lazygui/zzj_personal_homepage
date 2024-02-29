@@ -7,6 +7,10 @@ const messages = {
                      email: '来封Email吧~_~',
                      qq: '有什么事吗?'
               }
+       },
+       relatedInfo: {
+              blog: '博客',
+              briefIntroduction: '个人简介'
        }
 }
 

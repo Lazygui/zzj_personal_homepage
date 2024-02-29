@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import ContactMe from '@/components/ContactMe.vue'
+import RelatedInfo from '@/components/RelatedInfo.vue'
 </script>
 
 <template>
   <div class="homepage">
     <ContactMe></ContactMe>
-    <div style="width: 50%;"></div>
+    <RelatedInfo></RelatedInfo>
   </div>
 </template>
 

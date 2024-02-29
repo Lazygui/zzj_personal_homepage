@@ -53,17 +53,19 @@ const iconMouseover = (text: string) => {
 
 <template>
   <div class="ContactMe">
-    <div class="titles">Hello World!</div>
-    <div class="joking card">{{ $t('contactMe.jok') }}</div>
-    <div class="cicon card">
-      <div class="icon">
-        <a :href="item.href" v-for="item in aIcon" target="_blank">
-          <img :src="item.imgUrl" class="icons-item" @mouseover="iconMouseover(item.iconText)"
-            @mouseout="iconMouseover('weclome')" />
-        </a>
-      </div>
-      <div class="iconText">
-        <span>{{ iconText }}</span>
+    <div class="cotDiv">
+      <div class="titles">Hello World!</div>
+      <div class="joking card">{{ $t('contactMe.jok') }}</div>
+      <div class="cicon card">
+        <div class="icon">
+          <a :href="item.href" v-for="item in aIcon" target="_blank">
+            <img :src="item.imgUrl" class="icons-item" @mouseover="iconMouseover(item.iconText)"
+              @mouseout="iconMouseover('weclome')" />
+          </a>
+        </div>
+        <div class="iconText">
+          <span>{{ iconText }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -75,58 +77,68 @@ const iconMouseover = (text: string) => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 
-  .titles {
-    font-family: 'Pacifico', cursive;
-    font-size: 5rem;
-  }
-
-  .joking {
+  .cotDiv {
     width: 70%;
-  }
-
-  .cicon {
-    margin-top: 1rem;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0rem;
+    padding-right: 10%;
     box-sizing: border-box;
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(0px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    .icon {
-      width: 50%;
+    .titles {
+      font-family: 'Pacifico', cursive;
+      font-size: 5rem;
+    }
+
+    .joking {
+      width: 90%;
+    }
+
+    .cicon {
+      margin-top: 1rem;
+      width: 90%;
       display: flex;
       align-items: center;
-      padding-left: 1rem;
+      justify-content: space-between;
+      padding: 1rem 0rem;
       box-sizing: border-box;
+      background: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
 
-      .icons-item {
-        padding: 0rem 1rem;
-        width: 1.5rem;
-        height: 1.5rem;
+      .icon {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        box-sizing: border-box;
+
+        .icons-item {
+          padding: 0rem 1rem;
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+
+      .iconText {
+        padding-right: 2rem;
+        box-sizing: border-box;
+        text-align: end;
+        width: 50%;
+        color: rgba(0, 0, 0, 0);
       }
     }
 
-    .iconText {
-      padding-right: 2rem;
-      box-sizing: border-box;
-      text-align: end;
-      width: 50%;
-      color: rgba(0, 0, 0, 0);
-    }
-  }
+    .cicon:hover {
+      background: rgba(0, 0, 0, .35);
+      backdrop-filter: blur(10px);
 
-  .cicon:hover {
-    background: rgba(0, 0, 0, .35);
-    backdrop-filter: blur(10px);
-
-    .iconText {
-      color: #fff;
+      .iconText {
+        color: #fff;
+      }
     }
   }
 }
