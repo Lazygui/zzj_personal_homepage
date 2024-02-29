@@ -29,7 +29,7 @@ const openNewPage = (url: string) => {
 }
 const iconlinkList = [
   {
-    linkUrl: '/public/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf',
+    linkUrl: '/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf',
     titel: '个人简介',
     iconUrl: homepage,
     enumerationText: 'briefIntroduction'
