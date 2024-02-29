@@ -1,55 +1,34 @@
-<script setup>
-
-import { getRandomBg } from "@/tool/imageService.js";
-import Mouse from "@/components/Mouse.vue";
-import BottomBar from "@/components/BottomBar.vue";
-
-const randomImage = getRandomBg();
-
+<script setup lang="ts">
+import { useWindowSize } from '@vueuse/core';
+import { computed } from 'vue';
+const { width } = useWindowSize()
+const scallRatio = computed(() => {
+  return width.value / 1920
+})
+// const userLanguage = localStorage.getItem('vueuse-lang') || navigator.language;
+// console.log("🚀 ~ userLanguage:", userLanguage)
 </script>
 
 <template>
-  <!--   背景图片-->
-  <div class="bg-img">
-    <img :src="randomImage" alt="">
+  <div class="container">
+    <router-view>
+    </router-view>
   </div>
-
-  <!--    鼠标样式-->
-  <Mouse></Mouse>
-
-  <!--    底栏-->
-  <bottomBar></bottomBar>
-
-  <router-view />
 </template>
 
 <style scoped>
-.bg-img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.bg-img::before {
-  content: "";
+.container {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: transparent;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.bg-img img {
-  position: relative;
-  z-index: 0;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transform: scale(v-bind(scallRatio));
+  background-image: url('@/assets/bg0.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 </style>
