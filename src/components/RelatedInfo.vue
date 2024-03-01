@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import GetAWord from '@/api/httpRequest'
 import { onMounted } from 'vue';
+import router from '@/routes/index'
 import works from '@/assets/icon/img.svg'
 import homepage from '@/assets/icon/homepage.svg'
 import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
@@ -26,7 +27,14 @@ const getAWord = () => {
 }
 //在新页面打开网页
 const openNewPage = (url: string) => {
-  window.open(url)
+  if (url.length > 0) {
+    window.open(url)
+  } else {
+    const maintenanceRoute = router.resolve({
+      name: 'underMaintenance',
+    });
+    window.open(maintenanceRoute.href, '_blank')
+  }
 }
 const iconlinkList = [
   {

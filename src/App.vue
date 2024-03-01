@@ -1,12 +1,4 @@
 <script setup lang="ts">
-import { useWindowSize } from '@vueuse/core';
-import { computed } from 'vue';
-const { width } = useWindowSize()
-const scallRatio = computed(() => {
-  return width.value / 1920
-})
-// const userLanguage = localStorage.getItem('vueuse-lang') || navigator.language;
-// console.log("🚀 ~ userLanguage:", userLanguage)
 </script>
 
 <template>
@@ -58,7 +50,8 @@ const scallRatio = computed(() => {
   height: 100%;
   pointer-events: none;
   transform-origin: 0 0;
-  transform: scale(v-bind(scallRatio));
+  /* transform: scale(v-bind(scallRatio)); */
+  /* border: 1px solid red; */
   /* background-image: url('@/assets/bg0.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%; */
