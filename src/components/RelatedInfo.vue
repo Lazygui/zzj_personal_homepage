@@ -4,6 +4,7 @@ import GetAWord from '@/api/httpRequest'
 import { onMounted } from 'vue';
 // import boke from '@/assets/icon/blog.svg'
 import homepage from '@/assets/icon/homepage.svg'
+import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
 
 /**
  * @description 名言
@@ -29,7 +30,7 @@ const openNewPage = (url: string) => {
 }
 const iconlinkList = [
   {
-    linkUrl: '/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf',
+    linkUrl: briefIntroduction,
     titel: '个人简介',
     iconUrl: homepage,
     enumerationText: 'briefIntroduction'
