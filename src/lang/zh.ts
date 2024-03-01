@@ -9,8 +9,8 @@ const messages = {
               }
        },
        relatedInfo: {
-              blog: '博客',
-              briefIntroduction: '个人简介'
+              briefIntroduction: '个人简介',
+              works: '作品集',
        }
 }
 

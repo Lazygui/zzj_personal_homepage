@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import GetAWord from '@/api/httpRequest'
 import { onMounted } from 'vue';
-// import boke from '@/assets/icon/blog.svg'
+import works from '@/assets/icon/img.svg'
 import homepage from '@/assets/icon/homepage.svg'
 import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
 
@@ -35,12 +35,12 @@ const iconlinkList = [
     iconUrl: homepage,
     enumerationText: 'briefIntroduction'
   },
-  // {
-  //   linkUrl: 'https://blog.ccrui.cn/',
-  //   titel: '博客',
-  //   iconUrl: boke,
-  // enumerationText: 'boke'
-  // },
+  {
+    linkUrl: '',
+    titel: '作品集',
+    iconUrl: works,
+    enumerationText: 'works'
+  },
 ]
 const getEnum = (enumStr: string) => {
   return `relatedInfo.${enumStr}`
