@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/components/HelloWorld.vue'
 import UnderMaintenance from '@/components/UnderMaintenance.vue'
-import EchartsView from '@/components/portfolio/visualization/EchartsView.vue'
+import Portfolio from '@/components/Portfolio.vue'
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -15,14 +15,22 @@ const routes: Array<RouteRecordRaw> = [
 		},
 	},
 	{
-		path: '/echartsView',
-		name: 'echartsView',
-		component: EchartsView,
-		meta: {
-			displayName: '数据可视化展示',
-			hideSelf: true,
-			requiresAuth: false,
-		},
+		path: '/portfolio',
+		name: 'portfolio',
+		component: Portfolio,
+		// redirect: '/portfolio/echartsView',
+		children: [
+			{
+				path: 'echartsView',
+				name: 'echartsView',
+				component: () =>
+					import('@/components/portfolio/visualization/EchartsView.vue'),
+				meta: {
+					displayName: '数据可视化展示',
+					requiresAuth: false,
+				},
+			},
+		],
 	},
 	{
 		path: '/underMaintenance',

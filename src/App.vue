@@ -1,4 +1,18 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { EquipmentInfo } from '@/store/equipmentIInfo'
+const equipmentInfo = EquipmentInfo()
+const ua = navigator.userAgent.toLowerCase();
+
+onMounted(() => {
+  if (/mobi/i.test(ua)) {
+    // 手机浏览器
+    equipmentInfo.isIos = true
+  } else {
+    // 非手机浏览器
+    equipmentInfo.isIos = false
+  }
+})
 </script>
 
 <template>

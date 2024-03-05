@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import i18n from '@/lang/index.js'
 import emailIcon from '@/assets/icon/email.png'
 import qqIcon from '@/assets/icon/qq.png'
+import { EquipmentInfo } from '@/store/equipmentIInfo'
+const equipmentInfo = EquipmentInfo()
 
 /**
  * @param imgUrl 图标路径 {string}
@@ -52,18 +54,35 @@ const iconMouseover = (text: string) => {
 </script>
 
 <template>
-  <div class="ContactMe">
-    <div class="cotDiv">
-      <div class="titles">Hello World!</div>
-      <div class="joking card">{{ $t('contactMe.jok') }}</div>
-      <div class="cicon card">
-        <div class="icon">
+  <div class="ContactMePC" v-if="!equipmentInfo.isIos">
+    <div class="cotDivPC">
+      <div class="titlesPC">Hello World!</div>
+      <div class="jokingPC card">{{ $t('contactMe.jok') }}</div>
+      <div class="ciconPC card">
+        <div class="iconPC">
           <a :href="item.href" v-for="item in aIcon" target="_blank">
-            <img :src="item.imgUrl" class="icons-item" @mouseover="iconMouseover(item.iconText)"
+            <img :src="item.imgUrl" class="icons-itemPC" @mouseover="iconMouseover(item.iconText)"
               @mouseout="iconMouseover('weclome')" />
           </a>
         </div>
-        <div class="iconText">
+        <div class="iconTextPC">
+          <span>{{ iconText }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ContactMeIos" v-else>
+    <div class="cotDivIos">
+      <div class="titlesIos">Hello World!</div>
+      <div class="jokingIos card">{{ $t('contactMe.jok') }}</div>
+      <div class="ciconIos card">
+        <div class="iconIos">
+          <a :href="item.href" v-for="item in aIcon" target="_blank">
+            <img :src="item.imgUrl" class="icons-itemIos" @mouseover="iconMouseover(item.iconText)"
+              @mouseout="iconMouseover('weclome')" />
+          </a>
+        </div>
+        <div class="iconTextIos">
           <span>{{ iconText }}</span>
         </div>
       </div>
@@ -72,7 +91,7 @@ const iconMouseover = (text: string) => {
 </template>
 
 <style scoped lang="less">
-.ContactMe {
+.ContactMePC {
   width: 50%;
   height: 100%;
   display: flex;
@@ -80,7 +99,7 @@ const iconMouseover = (text: string) => {
   align-items: flex-end;
   justify-content: center;
 
-  .cotDiv {
+  .cotDivPC {
     width: 70%;
     padding-right: 10%;
     box-sizing: border-box;
@@ -89,16 +108,16 @@ const iconMouseover = (text: string) => {
     align-items: center;
     justify-content: center;
 
-    .titles {
+    .titlesPC {
       font-family: 'Pacifico', cursive;
       font-size: 5rem;
     }
 
-    .joking {
+    .jokingPC {
       width: 90%;
     }
 
-    .cicon {
+    .ciconPC {
       margin-top: 1rem;
       width: 90%;
       display: flex;
@@ -109,21 +128,21 @@ const iconMouseover = (text: string) => {
       background: rgba(0, 0, 0, 0);
       backdrop-filter: blur(0px);
 
-      .icon {
+      .iconPC {
         width: 50%;
         display: flex;
         align-items: center;
         padding-left: 1rem;
         box-sizing: border-box;
 
-        .icons-item {
+        .icons-itemPC {
           padding: 0rem 1rem;
           width: 1.5rem;
           height: 1.5rem;
         }
       }
 
-      .iconText {
+      .iconTextPC {
         padding-right: 2rem;
         box-sizing: border-box;
         text-align: end;
@@ -132,11 +151,74 @@ const iconMouseover = (text: string) => {
       }
     }
 
-    .cicon:hover {
+    .ciconPC:hover {
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(10px);
 
-      .iconText {
+      .iconTextPC {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.ContactMeIos {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .cotDivIos {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .titlesIos {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.4rem;
+    }
+
+    .jokingIos {
+      width: 95%;
+
+    }
+
+    .ciconIos {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+
+      .iconIos {
+        width: 50%;
+        display: flex;
+        align-items: center;
+
+        .icons-itemIos {
+          padding: 0rem 1rem;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      .iconTextIos {
+        text-align: end;
+        width: 50%;
+        color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    .ciconIos:hover {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+
+      .iconTextIos {
         color: #fff;
       }
     }

@@ -3,7 +3,7 @@
 
 <template>
   <div class="EchartsView">
-    111
+    222
   </div>
 </template>
 
