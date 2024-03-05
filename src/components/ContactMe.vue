@@ -45,7 +45,7 @@ const aIcon: IaIcon[] = [
  * @type string
  * @defaultvalue ''
  */
-const iconText = ref<string>('')
+const iconText = ref<string>(i18n.global.t('contactMe.iconText.weclome'));
 const iconMouseover = (text: string) => {
   iconText.value = i18n.global.t('contactMe.iconText.' + text);
 }
@@ -133,7 +133,7 @@ const iconMouseover = (text: string) => {
     }
 
     .cicon:hover {
-      background: rgba(0, 0, 0, .35);
+      background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(10px);
 
       .iconText {
