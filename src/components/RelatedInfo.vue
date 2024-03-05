@@ -6,7 +6,9 @@ import router from '@/routes/index'
 import works from '@/assets/icon/img.svg'
 import homepage from '@/assets/icon/homepage.svg'
 import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
-
+import { useNow, useDateFormat } from '@vueuse/core';
+const years = useDateFormat(useNow(), 'YYYY-MM-DD')
+const timeDivision = useDateFormat(useNow(), 'HH:mm:ss')
 /**
  * @description 名言
  * @type string
@@ -70,8 +72,8 @@ onMounted(() => {
           <div class="from">-[{{ source }}]</div>
         </div>
         <div class="timeDiv card">
-          <div class="date">2024-02-29</div>
-          <div class="time">13:52:53</div>
+          <div class="date">{{ years }}</div>
+          <div class="time">{{ timeDivision }}</div>
         </div>
       </div>
       <div class="list">
