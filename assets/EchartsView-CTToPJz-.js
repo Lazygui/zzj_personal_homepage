@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as s}from"./index-CeGZsI4k.js";const t={},o={class:"EchartsView"};function a(r,_){return c(),s("div",o," 222 ")}const d=e(t,[["render",a],["__scopeId","data-v-295e05d3"]]);export{d as default};
