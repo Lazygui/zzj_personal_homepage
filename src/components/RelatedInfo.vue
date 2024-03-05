@@ -29,8 +29,16 @@ const getAWord = () => {
 }
 //在新页面打开网页
 const openNewPage = (url: string) => {
+  console.log("🚀 ~ openNewPage ~ url:", url)
   if (url.length > 0) {
-    window.open(url)
+    if (url.includes('src')) {
+      window.open(url)
+    } else {
+      const maintenanceRoute = router.resolve({
+        name: url,
+      });
+      window.open(maintenanceRoute.href, '_blank')
+    }
   } else {
     const maintenanceRoute = router.resolve({
       name: 'underMaintenance',
