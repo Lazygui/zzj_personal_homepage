@@ -2,6 +2,9 @@
 import { watchEffect, computed, ref, watch, onMounted } from 'vue';
 import { getTimeRemaining, setTargetDate } from '@/utils/updateCountdown'
 import { useDateFormat, useNow } from '@vueuse/core'
+import { EquipmentInfo } from '@/store/equipmentIInfo'
+const equipmentInfo = EquipmentInfo()
+console.log("🚀 ~ equipmentInfo:", equipmentInfo)
 const now = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
 
 interface IData {
@@ -92,8 +95,8 @@ watch(() => resetTime.value, (newVal: boolean) => {
 <template>
   <div class="Countdown">
     <div class="itemdown" v-for="item in dateTarget">
-      <div class="num">{{ item.value }}</div>
-      <div class="text">{{ item.text }}</div>
+      <div :class="`${!equipmentInfo.isIos ? 'numPc' : 'numIos'}`">{{ item.value }}</div>
+      <div :class="`${!equipmentInfo.isIos ? 'textPc' : 'textIos'}`">{{ item.text }}</div>
     </div>
   </div>
 </template>
@@ -114,15 +117,27 @@ watch(() => resetTime.value, (newVal: boolean) => {
     margin: 0rem 2rem;
     box-sizing: border-box;
 
-    .num {
+    .numPc {
       color: rgba(255, 255, 255, 0.9);
-      font-size: 56px;
+      font-size: 5.6rem;
       z-index: 0;
     }
 
-    .text {
+    .numIos {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 3.6rem;
+      z-index: 0;
+    }
+
+    .textPc {
       color: rgba(255, 255, 255, 0.8);
-      font-size: 26px;
+      font-size: 2.6rem;
+      z-index: 0;
+    }
+
+    .textIos {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.8rem;
       z-index: 0;
     }
   }

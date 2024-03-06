@@ -5,7 +5,7 @@ import { onMounted } from 'vue';
 import router from '@/routes/index'
 import works from '@/assets/icon/img.svg'
 import homepage from '@/assets/icon/homepage.svg'
-import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
+// import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
 import { useNow, useDateFormat } from '@vueuse/core';
 import { EquipmentInfo } from '@/store/equipmentIInfo'
 const equipmentInfo = EquipmentInfo()
@@ -49,7 +49,7 @@ const openNewPage = (url: string) => {
 }
 const iconlinkList = [
   {
-    linkUrl: briefIntroduction,
+    linkUrl: '',
     titel: '个人简介',
     iconUrl: homepage,
     enumerationText: 'briefIntroduction'
