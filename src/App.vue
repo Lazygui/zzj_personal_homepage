@@ -1,9 +1,28 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { EquipmentInfo } from '@/store/equipmentIInfo'
+const router = window.location.href.split('/')
+const routerName = router[router.length - 1]
 const equipmentInfo = EquipmentInfo()
 const ua = navigator.userAgent.toLowerCase();
 
+/**
+ * @description 不需要背景图的路由名称
+ * @param  {*}
+ * @defaultvalue 
+ */
+const isShowList = ['underMaintenance']
+const IsShowBgImg = () => {
+  if (routerName != '/' && routerName != '#') {
+    for (let index = 0; index < isShowList.length; index++) {
+      const element = isShowList[index];
+      if (element === routerName) {
+        return false
+      }
+    }
+  }
+  return true
+}
 onMounted(() => {
   if (/mobi/i.test(ua)) {
     // 手机浏览器
@@ -16,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-img">
+  <div class="bg-img" v-if="IsShowBgImg()">
     <img src="@/assets/bg0.jpg" alt="">
   </div>
   <div class="container">

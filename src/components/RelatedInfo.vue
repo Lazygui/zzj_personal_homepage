@@ -55,7 +55,7 @@ const iconlinkList = [
     enumerationText: 'briefIntroduction'
   },
   {
-    linkUrl: 'echartsView',
+    linkUrl: 'portfolio',
     titel: '作品集',
     iconUrl: works,
     enumerationText: 'works'

@@ -4,7 +4,6 @@ import { getTimeRemaining, setTargetDate } from '@/utils/updateCountdown'
 import { useDateFormat, useNow } from '@vueuse/core'
 import { EquipmentInfo } from '@/store/equipmentIInfo'
 const equipmentInfo = EquipmentInfo()
-console.log("🚀 ~ equipmentInfo:", equipmentInfo)
 const now = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
 
 interface IData {

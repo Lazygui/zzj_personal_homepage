@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import ChinaMap from '@/components/portfolio/visualization/ChinaMap.vue';
 </script>
 
 <template>
   <div class="EchartsView">
-    222
+    <ChinaMap></ChinaMap>
   </div>
 </template>
 
