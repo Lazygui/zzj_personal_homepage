@@ -110,10 +110,11 @@ const iconMouseover = (text: string) => {
 
     .titlesPC {
       font-family: 'Pacifico', cursive;
-      font-size: 5rem;
+      font-size: 8rem;
     }
 
     .jokingPC {
+      font-size: 1.6rem;
       width: 90%;
     }
 
@@ -137,12 +138,13 @@ const iconMouseover = (text: string) => {
 
         .icons-itemPC {
           padding: 0rem 1rem;
-          width: 1.5rem;
-          height: 1.5rem;
+          width: 2.4rem;
+          height: 2.4rem;
         }
       }
 
       .iconTextPC {
+        font-size: 1.6rem;
         padding-right: 2rem;
         box-sizing: border-box;
         text-align: end;
@@ -180,10 +182,11 @@ const iconMouseover = (text: string) => {
 
     .titlesIos {
       font-family: 'Pacifico', cursive;
-      font-size: 3.4rem;
+      font-size: 5.5rem;
     }
 
     .jokingIos {
+      font-size: 1.4rem;
       width: 95%;
 
     }
@@ -202,12 +205,13 @@ const iconMouseover = (text: string) => {
 
         .icons-itemIos {
           padding: 0rem 1rem;
-          width: 2rem;
-          height: 2rem;
+          width: 3rem;
+          height: 3rem;
         }
       }
 
       .iconTextIos {
+        font-size: 1.4rem;
         text-align: end;
         width: 50%;
         color: rgba(0, 0, 0, 0);

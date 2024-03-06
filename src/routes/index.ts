@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/components/HelloWorld.vue'
+import Home from '@/views/HelloWorld.vue'
 import UnderMaintenance from '@/components/UnderMaintenance.vue'
 import Portfolio from '@/components/Portfolio.vue'
 
