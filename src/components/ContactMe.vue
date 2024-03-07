@@ -63,7 +63,7 @@ const iconMouseover = (text: string) => {
       <div class="ciconPC card">
         <div class="iconPC">
           <a :href="item.href" v-for="item in aIcon" target="_blank">
-            <img :src="item.imgUrl" class="icons-itemPC" @mouseover="iconMouseover(item.iconText)"
+            <img alt="" :src="item.imgUrl" class="icons-itemPC" @mouseover="iconMouseover(item.iconText)"
                  @mouseout="iconMouseover('weclome')"/>
           </a>
         </div>
@@ -80,7 +80,7 @@ const iconMouseover = (text: string) => {
       <div class="ciconIos card">
         <div class="iconIos">
           <a :href="item.href" v-for="item in aIcon" target="_blank">
-            <img :src="item.imgUrl" class="icons-itemIos" @mouseover="iconMouseover(item.iconText)"
+            <img alt="" :src="item.imgUrl" class="icons-itemIos" @mouseover="iconMouseover(item.iconText)"
                  @mouseout="iconMouseover('weclome')"/>
           </a>
         </div>
@@ -92,7 +92,7 @@ const iconMouseover = (text: string) => {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .ContactMePC {
   width: 50%;
   height: 100%;

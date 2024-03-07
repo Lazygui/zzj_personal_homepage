@@ -23,7 +23,7 @@ const goNewLabel = (url: string) => {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .Portfolio {
   width: 100%;
   height: 100%;

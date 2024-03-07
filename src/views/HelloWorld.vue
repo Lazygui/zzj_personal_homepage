@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import ContactMe from '@/components/ContactMe.vue'
 import RelatedInfo from '@/components/RelatedInfo.vue'
-import { EquipmentInfo } from '@/store/equipmentIInfo'
+import {EquipmentInfo} from '@/store/equipmentIInfo'
+
 const equipmentInfo = EquipmentInfo()
 </script>
 
@@ -20,7 +21,7 @@ const equipmentInfo = EquipmentInfo()
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .homepagePc {
   width: 100%;
   height: 100%;

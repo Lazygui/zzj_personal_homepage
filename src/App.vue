@@ -25,13 +25,7 @@ const IsShowBgImg = () => {
   return true
 }
 onMounted(() => {
-  if (/mobi/i.test(ua)) {
-    // 手机浏览器
-    equipmentInfo.isIos = true
-  } else {
-    // 非手机浏览器
-    equipmentInfo.isIos = false
-  }
+  equipmentInfo.isIos = /mobi/i.test(ua);
 })
 </script>
 

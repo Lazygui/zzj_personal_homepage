@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, Ref} from 'vue'
 import GetAWord from '@/api/httpRequest'
 import {onMounted} from 'vue';
 import router from '@/routes/index'
@@ -17,15 +17,15 @@ const timeDivision = useDateFormat(useNow(), 'HH:mm:ss')
  * @type string
  * @defaultvalue ''
  */
-const sentence = ref<string>('三尺书生，一介微命')
+const sentence: Ref<string> = ref('三尺书生，一介微命')
 /**
  * @description 出处
  * @type string
  * @defaultvalue ''
  */
-const source = ref<string>('滕王阁序')
+const source: Ref<string> = ref('滕王阁序')
 const getAWord = () => {
-  GetAWord((ok: any) => {
+  GetAWord((ok: { hitokoto: string, from: string }) => {
     sentence.value = ok.hitokoto
     source.value = ok.from
   })
@@ -51,13 +51,11 @@ const openNewPage = (url: string) => {
 const iconlinkList = [
   {
     linkUrl: '',
-    titel: '个人简介',
     iconUrl: homepage,
     enumerationText: 'briefIntroduction'
   },
   {
     linkUrl: 'portfolio',
-    titel: '作品集',
     iconUrl: works,
     enumerationText: 'works'
   },
@@ -87,6 +85,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="listPc">
+        <!--suppress XmlUnusedNamespaceDeclaration -->
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
              data-v-6b5f55f6="" class="separate-svgPc">
           <path
@@ -97,7 +96,7 @@ onMounted(() => {
       </div>
       <div class="iconlinkListPc">
         <div class="itemDivPc card" @click="openNewPage(item.linkUrl)" v-for="item in iconlinkList">
-          <img :src="item.iconUrl" class="item-iconPc">
+          <img :src="item.iconUrl" class="item-iconPc" alt="">
           <span class="item-textPc">
             {{ $t(getEnum(item.enumerationText)) }}
           </span>
@@ -120,6 +119,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="listIos">
+        <!--suppress XmlUnusedNamespaceDeclaration -->
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
              data-v-6b5f55f6="" class="separate-svgIos">
           <path
@@ -130,7 +130,7 @@ onMounted(() => {
       </div>
       <div class="iconlinkListIos">
         <div class="itemDivIos card" @click="openNewPage(item.linkUrl)" v-for="item in iconlinkList">
-          <img :src="item.iconUrl" class="item-iconIos">
+          <img :src="item.iconUrl" class="item-iconIos" alt="">
           <span class="item-textIos">
             {{ $t(getEnum(item.enumerationText)) }}
           </span>
@@ -140,7 +140,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .RelatedInfoPc {
   width: 50%;
   height: 100%;

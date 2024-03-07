@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Countdown from '@/components/Countdown.vue'
-import { EquipmentInfo } from '@/store/equipmentIInfo'
+import {EquipmentInfo} from '@/store/equipmentIInfo'
+
 const equipmentInfo = EquipmentInfo()
 </script>
 
@@ -39,7 +40,7 @@ const equipmentInfo = EquipmentInfo()
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .UnderMaintenancePc {
   width: 100%;
   height: 100%;
@@ -126,7 +127,6 @@ const equipmentInfo = EquipmentInfo()
     align-items: center;
     justify-content: center;
   }
-
 
 
   .mapIos {

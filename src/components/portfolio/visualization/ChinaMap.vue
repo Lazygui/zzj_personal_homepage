@@ -75,7 +75,7 @@ function isEmptyFunction(fn: Function | undefined | (() => void)) {
   // 转换为字符串并去除前后的空格和换行符
   const functionString = fn.toString().trim()
   //正则匹配
-  let regex: RegExp = functionString.includes('function') ? /\s*\)\s*\{/ : /\s*\>\s*\{/
+  let regex: RegExp = functionString.includes('function') ? /\s*\)\s*\{/ : /\s*\s*\{/
   const matching = functionString.split(regex)[1].trim()
   const result = matching.charAt(0)
   // 如果函数体为空，则认为是空函数
@@ -83,7 +83,7 @@ function isEmptyFunction(fn: Function | undefined | (() => void)) {
 }
 
 onMounted(() => {
-  if (chartRef.value !== undefined && echarts !== undefined) {
+  if (chartRef.value !== undefined) {
     if (echartInstance.value === undefined) {
       echartInstance.value = echarts?.init(chartRef.value)
     }
@@ -98,7 +98,7 @@ onMounted(() => {
   watch(
       options,
       (newVal, oldVal) => {
-        if (chartRef.value !== undefined && echarts !== undefined) {
+        if (chartRef.value !== undefined) {
           if (echartInstance.value === undefined) {
             echartInstance.value = echarts?.init(chartRef.value);
           }

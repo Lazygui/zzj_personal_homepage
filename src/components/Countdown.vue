@@ -64,11 +64,7 @@ const dateTarget = computed(() => {
 const countdown = () => {
   const timestamp = Math.floor(new Date(now.value).getTime() / 1000);
   const {days: d, hours: h, minutes: m, seconds: s} = getTimeRemaining(timestamp);
-  if (d === 0 && h === 0 && m === 0 && s === 0) {
-    resetTime.value = true
-  } else {
-    resetTime.value = false
-  }
+  resetTime.value = d === 0 && h === 0 && m === 0 && s === 0;
   classification.value.days = d < 10 ? '0' + d : d
   classification.value.hours = h < 10 ? '0' + h : h
   classification.value.minutes = m < 10 ? '0' + m : m
@@ -95,14 +91,14 @@ watch(() => resetTime.value, (newVal: boolean) => {
 
 <template>
   <div class="Countdown">
-    <div class="itemdown" v-for="item in dateTarget">
+    <div class="item-down" v-for="item in dateTarget">
       <div :class="`${!equipmentInfo.isIos ? 'numPc' : 'numIos'}`">{{ item.value }}</div>
       <div :class="`${!equipmentInfo.isIos ? 'textPc' : 'textIos'}`">{{ item.text }}</div>
     </div>
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .Countdown {
   width: 100%;
   height: 100%;
@@ -110,7 +106,7 @@ watch(() => resetTime.value, (newVal: boolean) => {
   justify-content: center;
   align-items: center;
 
-  .itemdown {
+  .item-down {
     display: flex;
     flex-direction: column;
     justify-content: center;
