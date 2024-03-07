@@ -33,4 +33,4 @@ export default [
 	'重庆市',
 	'香港特别行政区',
 	'澳门特别行政区',
-]
+] as const

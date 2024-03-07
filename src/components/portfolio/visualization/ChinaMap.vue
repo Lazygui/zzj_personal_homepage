@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import chinaMapParams from "@/libs/china";
-import { onMounted, ref, computed, watch } from 'vue'
+import {onMounted, ref, computed, watch} from 'vue'
 import * as echarts from "echarts"
-import { useEventListener } from "@vueuse/core";
+import {useEventListener} from "@vueuse/core";
 import provincialCapital from '@/libs/provincialCapital'
+
+const props = withDefaults(defineProps<{
+  showAdress: ((typeof provincialCapital)[number])[],
+  adressFun?: () => void
+}>(), {
+  showAdress: () => {
+    return []
+  }
+})
 const echartInstance = ref<echarts.EChartsType>()
 const chartRef = ref<HTMLElement>()
 const options = computed(() => {
@@ -28,24 +37,51 @@ const options = computed(() => {
             shadowColor: 'rgba(122,122,255,1)'
           }
         },
-        data:
-          provincialCapital.map((c: string) => {
-            return {
-              name: c,
-              label: {
-                show: true,
-                color: 'rgba(255,255,255,1)',
-                formatter: c
-              },
-              itemStyle: {
-                areaColor: 'rgba(0,210,200,1)',
+        data: props.showAdress.length > 0 ?
+            provincialCapital.map((c: string) => {
+              return {
+                name: c,
+                label: {
+                  show: true,
+                  color: 'rgba(255,255,255,1)',
+                  formatter: c
+                },
+                itemStyle: {
+                  areaColor: 'rgba(0,210,200,1)',
+                }
               }
-            }
-          })
+            }) : []
       }
     ]
   }
 })
+const obj = {
+  value: 'object value',
+  method: function () {
+    console.log(this.value); // 使用obj的value
+    return () => {
+      console.log(this.value); // 这里的this不指向obj，可能会引发错误
+    }
+  },
+
+};
+obj.method()()
+
+function isEmptyFunction(fn: Function | undefined | (() => void)) {
+  // 如果fn不是函数，返回false
+  if (typeof fn !== 'function') {
+    return false;
+  }
+  // 转换为字符串并去除前后的空格和换行符
+  const functionString = fn.toString().trim()
+  //正则匹配
+  let regex: RegExp = functionString.includes('function') ? /\s*\)\s*\{/ : /\s*\>\s*\{/
+  const matching = functionString.split(regex)[1].trim()
+  const result = matching.charAt(0)
+  // 如果函数体为空，则认为是空函数
+  return result === '}';
+}
+
 onMounted(() => {
   if (chartRef.value !== undefined && echarts !== undefined) {
     if (echartInstance.value === undefined) {
@@ -53,22 +89,23 @@ onMounted(() => {
     }
     echarts?.registerMap('china', chinaMapParams as any)
     echartInstance.value.setOption(options.value)
-    // echartInstance.value.on('click', (p) => {
-    //   if (hasProCitys.includes(p.name)) {  
-    //   }
-    // })
+    if (!isEmptyFunction(props.adressFun)) {
+      echartInstance.value.on('click', (p) => {
+        props.adressFun?.()
+      })
+    }
   }
   watch(
-    options,
-    (newVal, oldVal) => {
-      if (chartRef.value !== undefined && echarts !== undefined) {
-        if (echartInstance.value === undefined) {
-          echartInstance.value = echarts?.init(chartRef.value);
+      options,
+      (newVal, oldVal) => {
+        if (chartRef.value !== undefined && echarts !== undefined) {
+          if (echartInstance.value === undefined) {
+            echartInstance.value = echarts?.init(chartRef.value);
+          }
+          echartInstance.value.setOption(options.value);
         }
-        echartInstance.value.setOption(options.value);
-      }
-    },
-    { deep: true }
+      },
+      {deep: true}
   );
 })
 useEventListener("resize", () => {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import router from '@/routes/index'
+
 const works = [
   {
     url: 'echartsView'
@@ -37,13 +38,13 @@ const goNewLabel = (url: string) => {
     grid-gap: 20px;
 
     .item {
-      padding: 0rem 0.5rem;
+      padding: 0 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .item>img {
+    .item > img {
       display: block;
       height: 95%;
       width: 95%;

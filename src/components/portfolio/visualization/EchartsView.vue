@@ -4,7 +4,7 @@ import ChinaMap from '@/components/portfolio/visualization/ChinaMap.vue';
 
 <template>
   <div class="EchartsView">
-    <ChinaMap></ChinaMap>
+    <ChinaMap :show-adress="[]"></ChinaMap>
   </div>
 </template>
 

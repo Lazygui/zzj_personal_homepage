@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {ref} from 'vue'
 import i18n from '@/lang/index.js'
 import emailIcon from '@/assets/icon/email.png'
 import qqIcon from '@/assets/icon/qq.png'
-import { EquipmentInfo } from '@/store/equipmentIInfo'
+import {EquipmentInfo} from '@/store/equipmentIInfo'
+
 const equipmentInfo = EquipmentInfo()
 
 /**
@@ -29,6 +30,7 @@ interface IaIcon {
    */
   href: string
 }
+
 const aIcon: IaIcon[] = [
   {
     imgUrl: qqIcon,
@@ -62,7 +64,7 @@ const iconMouseover = (text: string) => {
         <div class="iconPC">
           <a :href="item.href" v-for="item in aIcon" target="_blank">
             <img :src="item.imgUrl" class="icons-itemPC" @mouseover="iconMouseover(item.iconText)"
-              @mouseout="iconMouseover('weclome')" />
+                 @mouseout="iconMouseover('weclome')"/>
           </a>
         </div>
         <div class="iconTextPC">
@@ -79,7 +81,7 @@ const iconMouseover = (text: string) => {
         <div class="iconIos">
           <a :href="item.href" v-for="item in aIcon" target="_blank">
             <img :src="item.imgUrl" class="icons-itemIos" @mouseover="iconMouseover(item.iconText)"
-              @mouseout="iconMouseover('weclome')" />
+                 @mouseout="iconMouseover('weclome')"/>
           </a>
         </div>
         <div class="iconTextIos">
@@ -124,7 +126,7 @@ const iconMouseover = (text: string) => {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0rem;
+      padding: 1rem 0;
       box-sizing: border-box;
       background: rgba(0, 0, 0, 0);
       backdrop-filter: blur(0px);
@@ -137,7 +139,7 @@ const iconMouseover = (text: string) => {
         box-sizing: border-box;
 
         .icons-itemPC {
-          padding: 0rem 1rem;
+          padding: 0 1rem;
           width: 2.4rem;
           height: 2.4rem;
         }
@@ -204,7 +206,7 @@ const iconMouseover = (text: string) => {
         align-items: center;
 
         .icons-itemIos {
-          padding: 0rem 1rem;
+          padding: 0 1rem;
           width: 3rem;
           height: 3rem;
         }

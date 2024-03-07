@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { EquipmentInfo } from '@/store/equipmentIInfo'
+import {onMounted} from 'vue';
+import {EquipmentInfo} from '@/store/equipmentIInfo'
+
 const router = window.location.href.split('/')
 const routerName = router[router.length - 1]
 const equipmentInfo = EquipmentInfo()
 const ua = navigator.userAgent.toLowerCase();
 
 /**
- * @description 不需要背景图的路由名称
- * @param  {*}
- * @defaultvalue 
+ * @description 是否显示背景图片
+ * @type boolean
+ * @defaultvalue true
  */
-const isShowList = ['underMaintenance']
+const isShowList = ['underMaintenance', 'echartsView']
 const IsShowBgImg = () => {
   if (routerName != '/' && routerName != '#') {
     for (let index = 0; index < isShowList.length; index++) {

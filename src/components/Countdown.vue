@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { watchEffect, computed, ref, watch, onMounted } from 'vue';
-import { getTimeRemaining, setTargetDate } from '@/utils/updateCountdown'
-import { useDateFormat, useNow } from '@vueuse/core'
-import { EquipmentInfo } from '@/store/equipmentIInfo'
+import {watchEffect, computed, ref, watch, onMounted} from 'vue';
+import {getTimeRemaining, setTargetDate} from '@/utils/updateCountdown'
+import {useDateFormat, useNow} from '@vueuse/core'
+import {EquipmentInfo} from '@/store/equipmentIInfo'
+
 const equipmentInfo = EquipmentInfo()
 const now = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
 
@@ -12,6 +13,7 @@ interface IData {
   minutes: number | string
   seconds: number | string
 }
+
 /**
  * @param days 倒计时天数-number
  */
@@ -36,7 +38,7 @@ const classification = ref<IData>({
 /**
  * @description 时间每变化一秒则
  * @param  {*}
- * @defaultvalue 
+ * @defaultvalue
  */
 const dateTarget = computed(() => {
   return [
@@ -61,7 +63,7 @@ const dateTarget = computed(() => {
 })
 const countdown = () => {
   const timestamp = Math.floor(new Date(now.value).getTime() / 1000);
-  const { days: d, hours: h, minutes: m, seconds: s } = getTimeRemaining(timestamp);
+  const {days: d, hours: h, minutes: m, seconds: s} = getTimeRemaining(timestamp);
   if (d === 0 && h === 0 && m === 0 && s === 0) {
     resetTime.value = true
   } else {
@@ -113,7 +115,7 @@ watch(() => resetTime.value, (newVal: boolean) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0rem 2rem;
+    margin: 0 2rem;
     box-sizing: border-box;
 
     .numPc {
