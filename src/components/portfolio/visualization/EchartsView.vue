@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import provincialCapital from '@/libs/provincialCapital'
 import ChinaMap from '@/components/portfolio/visualization/ChinaMap.vue';
 
-const adress = ['辽宁'];
+type IAdress = (typeof provincialCapital)[number];
+const adress: IAdress[] = ['辽宁省'];
 </script>
 
 <template>
