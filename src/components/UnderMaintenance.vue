@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import Countdown from '@/components/Countdown.vue'
 import {EquipmentInfo} from '@/store/equipmentIInfo'
+import {onMounted, onUnmounted} from "vue";
 
 const equipmentInfo = EquipmentInfo()
+onMounted(() => {
+  equipmentInfo.isBackImg = false
+});
+onUnmounted(() => {
+  equipmentInfo.isBackImg = true
+});
 </script>
 
 <template>

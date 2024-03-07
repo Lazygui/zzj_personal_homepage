@@ -3,10 +3,11 @@ import chinaMapParams from "@/libs/china";
 import {onMounted, ref, computed, watch} from 'vue'
 import * as echarts from "echarts"
 import {useEventListener} from "@vueuse/core";
-import provincialCapital from '@/libs/provincialCapital'
+import {IAdress} from '@/libs/provincialCapital'
+import {isEmptyFunction} from "@/utils/tools.ts";
 
 const props = withDefaults(defineProps<{
-  showAdress: ((typeof provincialCapital)[number])[],
+  showAdress: IAdress[],
   adressFun?: () => void
 }>(), {
   showAdress: () => {
@@ -38,13 +39,12 @@ const options = computed(() => {
           }
         },
         data: props.showAdress.length > 0 ?
-            provincialCapital.map((c: string) => {
+            props.showAdress.map((c: string) => {
               return {
                 name: c,
                 label: {
                   show: true,
                   color: 'rgba(255,255,255,1)',
-                  formatter: c
                 },
                 itemStyle: {
                   areaColor: 'rgba(0,210,200,1)',
@@ -55,32 +55,6 @@ const options = computed(() => {
     ]
   }
 })
-const obj = {
-  value: 'object value',
-  method: function () {
-    console.log(this.value); // 使用obj的value
-    return () => {
-      console.log(this.value); // 这里的this不指向obj，可能会引发错误
-    }
-  },
-
-};
-obj.method()()
-
-function isEmptyFunction(fn: Function | undefined | (() => void)) {
-  // 如果fn不是函数，返回false
-  if (typeof fn !== 'function') {
-    return false;
-  }
-  // 转换为字符串并去除前后的空格和换行符
-  const functionString = fn.toString().trim()
-  //正则匹配
-  let regex: RegExp = functionString.includes('function') ? /\s*\)\s*\{/ : /\s*\s*\{/
-  const matching = functionString.split(regex)[1].trim()
-  const result = matching.charAt(0)
-  // 如果函数体为空，则认为是空函数
-  return result === '}';
-}
 
 onMounted(() => {
   if (chartRef.value !== undefined) {
@@ -130,6 +104,7 @@ useEventListener("resize", () => {
   .chart {
     width: 100%;
     height: 100%;
+    pointer-events: all;
   }
 }
 </style>
