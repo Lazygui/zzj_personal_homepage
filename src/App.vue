@@ -7,13 +7,14 @@ const routerName = router[router.length - 1]
 const equipmentInfo = EquipmentInfo()
 const ua = navigator.userAgent.toLowerCase();
 
+
+const isShowList: string[] = ['underMaintenance', 'echartsView']
+
 /**
- * @description 是否显示背景图片
- * @type boolean
- * @defaultvalue true
+ * 判断是否显示背景图片，根据当前路由名称进行判断。
+ * @returns {boolean} 是否显示背景图片。
  */
-const isShowList = ['underMaintenance', 'echartsView']
-const IsShowBgImg = () => {
+const IsShowBgImg = (): boolean => {
   if (routerName != '/' && routerName != '#') {
     for (let index = 0; index < isShowList.length; index++) {
       const element = isShowList[index];
@@ -26,6 +27,16 @@ const IsShowBgImg = () => {
 }
 onMounted(() => {
   equipmentInfo.isIos = /mobi/i.test(ua);
+  //阻止F12调试
+  document.addEventListener("keydown", function (e: KeyboardEvent) {
+    if (e.key == "F12") {
+      e.preventDefault();
+    }
+  });
+  //阻止右键菜单
+  document.addEventListener("contextmenu", function (e: MouseEvent) {
+    e.preventDefault()
+  });
 })
 </script>
 
