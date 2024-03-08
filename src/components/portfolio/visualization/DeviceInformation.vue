@@ -75,7 +75,7 @@ const infoList = [
       justify-content: center;
 
       .num {
-        font-size: 1.6rem;
+        font-size: 2.4rem;
       }
 
       .iconName {
@@ -91,6 +91,7 @@ const infoList = [
         }
 
         .name {
+          font-size: 1.6rem;
           color: #56a1f3;
         }
       }

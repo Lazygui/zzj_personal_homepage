@@ -3,8 +3,9 @@ import {IAdress} from '@/libs/provincialCapital'
 import ChinaMap from '@/components/portfolio/visualization/ChinaMap.vue';
 import {onMounted, onUnmounted} from "vue";
 import {EquipmentInfo} from '@/store/equipmentIInfo'
-import TitleBar from "@/components/portfolio/visualization/TitleBar.vue";
 import DeviceInformation from "@/components/portfolio/visualization/DeviceInformation.vue";
+import Monitor from "@/components/portfolio/visualization/Monitor.vue";
+import PointDistribution from "@/components/portfolio/visualization/PointDistribution.vue";
 
 const equipmentInfo = EquipmentInfo()
 const adress: IAdress[] = ['辽宁省'];
@@ -22,6 +23,8 @@ onUnmounted(() => {
   <div class="EchartsView">
     <div class="panelLeft">
       <DeviceInformation></DeviceInformation>
+      <Monitor></Monitor>
+      <PointDistribution></PointDistribution>
     </div>
     <div class="map">
       <div class="china">
@@ -48,6 +51,7 @@ onUnmounted(() => {
     height: 100%;
     padding: 3% 0 0 3%;
     box-sizing: border-box;
+
     //border: 1px solid yellow;
   }
 
