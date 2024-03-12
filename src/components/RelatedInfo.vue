@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {ref, Ref} from 'vue'
-import GetAWord from '@/api/httpRequest'
 import {onMounted} from 'vue';
 import router from '@/routes/index'
 import works from '@/assets/icon/img.svg'
 import homepage from '@/assets/icon/homepage.svg'
+import useAxios, {ICommonResult} from '@/api/useAxios.ts'
 // import briefIntroduction from '@/assets/files/国网吉林超高压公司500kV延吉变远程智能巡视系统建设竣工图.pdf'
 import {useNow, useDateFormat} from '@vueuse/core';
 import {EquipmentInfo} from '@/store/equipmentIInfo'
@@ -24,11 +24,12 @@ const sentence: Ref<string> = ref('三尺书生，一介微命')
  * @defaultvalue ''
  */
 const source: Ref<string> = ref('滕王阁序')
-const getAWord = () => {
-  GetAWord((ok: { hitokoto: string, from: string }) => {
-    sentence.value = ok.hitokoto
-    source.value = ok.from
-  })
+const getAWord = async () => {
+  const res: ICommonResult = await useAxios.get('https://v1.hitokoto.cn/')
+  if (res.data && res.success) {
+    sentence.value = res.data.hitokoto
+    source.value = res.data.from
+  }
 }
 //在新页面打开网页
 const openNewPage = (url: string) => {
