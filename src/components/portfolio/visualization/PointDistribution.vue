@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import TitleBar from "@/components/portfolio/visualization/TitleBar.vue";
 import PointPie from "@/components/portfolio/visualization/PointPie.vue";
+import CardInfo from "@/components/portfolio/visualization/CardInfo.vue";
+import {randomInt} from "@/utils/randomDates.ts";
 
+const firstRow =
+    {
+      title: '点位总数',
+      num: randomInt(1, 4000)
+    }
+const secondRow =
+    {
+      title: '本月新增',
+      num: randomInt(1, 1000)
+    }
 </script>
 
 <template>
@@ -11,11 +23,8 @@ import PointPie from "@/components/portfolio/visualization/PointPie.vue";
       <div class="pieChart">
         <PointPie></PointPie>
       </div>
-      <div class="pieCard">
-        <div class="item-card">
-          <div v-thousand>32011</div>
-          <div>点位总数</div>
-        </div>
+      <div class="info">
+        <CardInfo :first-row="firstRow" :second-row="secondRow"></CardInfo>
       </div>
     </div>
   </div>
@@ -31,23 +40,17 @@ import PointPie from "@/components/portfolio/visualization/PointPie.vue";
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
 
     .pieChart {
-      border: 1px solid red;
-      width: 60%;
-      height: 35rem;
+      width: 55%;
+      height: 27rem;
     }
 
-    .pieCard {
+    .info {
       width: 40%;
-      border: 1px solid yellow;
-      background-color: rgba(15, 27, 70, 1);
-
-      .item-card {
-
-      }
+      height: 27rem;
     }
   }
 }

@@ -82,7 +82,7 @@ const randomList = (len: number): IMonitorList[] => {
 
     .tableDiv {
       width: 95%;
-      height: 35rem;
+      height: 30rem;
       font-size: 1.8rem;
       pointer-events: all;
       overflow-y: hidden;

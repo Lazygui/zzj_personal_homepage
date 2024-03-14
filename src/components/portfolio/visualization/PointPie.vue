@@ -24,7 +24,7 @@ const options = computed(() => {
       {
         name: 'Nightingale Chart',
         type: 'pie',
-        radius: [10, 100],
+        radius: [10, 80],
         center: ['50%', '50%'],
         roseType: 'area',
         itemStyle: {

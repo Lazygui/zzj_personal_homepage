@@ -29,9 +29,10 @@ const textColor = computed(() => props.textColor)
   display: flex;
   align-items: center;
   color: v-bind(textColor);
+  font-size: 1.6rem;
+  margin: 1rem 0;
   padding: 0 1rem;
   box-sizing: border-box;
-  font-size: 1.6rem;
 
   .text {
     display: flex;
