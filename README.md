@@ -13,17 +13,17 @@ https://lazygui.github.io/zzj_personal_homepage/#/
 ## 安装依赖
 
 ``` bash
-npm install
+pnpm install
 ```
 
 ## 运行
 
 ``` bash
-npm run dev
+pnpm run dev
 ```
 
 ## 打包
 
 ``` bash
-npm run build
+pnpm run build
 ```
