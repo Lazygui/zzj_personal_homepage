@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import chinaMapParams from "@/libs/china";
-import {onMounted, ref, computed, watch} from 'vue'
+import {computed, onMounted, ref, watch} from 'vue'
 import * as echarts from "echarts"
 import {useEventListener} from "@vueuse/core";
-import {IAdress} from '@/libs/provincialCapital'
 import {getRandomProvince} from "@/utils/tools";
 import {randomInt} from "@/utils/randomDates";
 

@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import {onMounted} from 'vue';
 import {EquipmentInfo} from '@/store/equipmentIInfo'
+import {useEventListener} from "@vueuse/core";
 
-const router = window.location.href.split('/')
-const routerName = router[router.length - 1]
+window.location.href.split('/');
 const equipmentInfo = EquipmentInfo()
 const ua = navigator.userAgent.toLowerCase();
+/**
+ * 自适应屏幕宽度，只有两种横屏及竖屏切换
+ */
+useEventListener("resize", (p: any) => {
+  const innerWidth = p.target.innerWidth
+  equipmentInfo.isIos = innerWidth < 1200
+});
 onMounted(() => {
   equipmentInfo.isIos = /mobi/i.test(ua);
+
   //阻止F12调试
   document.addEventListener("keydown", function (e: KeyboardEvent) {
     if (e.key == "F12") {
@@ -18,6 +26,7 @@ onMounted(() => {
   document.addEventListener("contextmenu", function (e: MouseEvent) {
     e.preventDefault()
   });
+
 })
 </script>
 
