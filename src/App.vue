@@ -26,7 +26,12 @@ onMounted(() => {
   document.addEventListener("contextmenu", function (e: MouseEvent) {
     e.preventDefault()
   });
-
+  navigator.geolocation.getCurrentPosition((position)=>{
+    console.log("🚀 ~ file:App method: line:30 -----", position)
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+    console.log("Accuracy: " + position.coords.accuracy + " meters");
+  })
 })
 </script>
 
